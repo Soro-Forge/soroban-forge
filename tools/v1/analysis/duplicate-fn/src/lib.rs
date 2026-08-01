@@ -43,10 +43,8 @@ pub fn analyze(source: &str) -> Vec<Duplicate> {
             .collect();
 
         if lines.len() > 1 {
-            duplicates.push(Duplicate {
-                name: definition.name.clone(),
-                lines,
-            });
+            let name = definition.name.clone();
+            duplicates.push(Duplicate { name, lines });
         }
 
         handled.push(key);
@@ -141,8 +139,9 @@ fn collect_definitions(source: &str) -> Vec<Definition> {
 
             if i < len && is_ident_start(chars[i]) {
                 let (name, after_name) = read_ident(&chars, i);
+                let scope = *scopes.last().unwrap_or(&0);
                 definitions.push(Definition {
-                    scope: *scopes.last().unwrap_or(&0),
+                    scope,
                     name,
                     line: fn_line,
                 });
