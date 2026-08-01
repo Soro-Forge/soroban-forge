@@ -108,9 +108,7 @@ pub fn analyze(source: &str) -> Vec<Finding> {
         findings.push(Finding {
             line: first,
             depth,
-            message: format!(
-                "brace depth ends at {depth}; the `{{` opened here was never closed"
-            ),
+            message: format!("brace depth ends at {depth}; the `{{` opened here was never closed"),
         });
     }
 
