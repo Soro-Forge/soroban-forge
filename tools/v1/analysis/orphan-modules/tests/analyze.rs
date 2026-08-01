@@ -97,6 +97,7 @@ fn an_identifier_containing_mod_is_not_a_declaration() {
 #[test]
 fn declared_modules_returns_names_in_order() {
     let declared = declared_modules(DECLARATIONS);
+    let expected = vec!["admin", "funding", "coverage", "integration"];
 
-    assert_eq!(declared, vec!["admin", "funding", "coverage", "integration"]);
+    assert_eq!(declared, expected);
 }
