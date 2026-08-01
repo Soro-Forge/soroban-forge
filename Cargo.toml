@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+    "tools/v1/analysis/*",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/Soro-Forge/soroban-forge"
+
+[workspace.lints.clippy]
+all = "warn"
