@@ -61,5 +61,8 @@ fn nested_functions_belong_to_their_parent_body() {
 
 #[test]
 fn lifetimes_do_not_disturb_scanning() {
-    assert_eq!(analyze("impl<'a> T<'a> {\n    fn v(&'a self) {}\n}\n"), Vec::new());
+    assert_eq!(
+        analyze("impl<'a> T<'a> {\n    fn v(&'a self) {}\n}\n"),
+        Vec::new()
+    );
 }
