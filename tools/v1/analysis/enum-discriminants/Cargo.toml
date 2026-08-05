@@ -1,0 +1,10 @@
+[package]
+name = "enum-discriminants"
+description = "Detects enum variants that resolve to the same discriminant value."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lints]
+workspace = true
