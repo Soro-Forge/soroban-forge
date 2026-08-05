@@ -26,11 +26,24 @@ Soroban Forge analyses Rust source as text, so it works on files that **do not c
 
 Each check is an independent tool. Each reports the exact line where structure diverges, not where the compiler eventually gave up.
 
+## Checks
+
+| Check | Detects | Layer of the failure |
+| --- | --- | --- |
+| [`brace-depth`](tools/v1/analysis/brace-depth) | Unclosed and unmatched braces, reported at the line that opened them | The parse error itself |
+| [`duplicate-fn`](tools/v1/analysis/duplicate-fn) | Functions defined more than once within a single block | What the bad merge actually did |
+| [`orphan-modules`](tools/v1/analysis/orphan-modules) | Test files on disk that no `mod` declaration references | Tests that silently never run |
+| [`enum-discriminants`](tools/v1/analysis/enum-discriminants) | Enum variants resolving to the same discriminant value | Defects hidden behind the parse error |
+
+Each is a library crate exposing a pure function over source text. None of them depend on one another.
+
 ## Status
 
-Early development. The architecture is settled; checks are being implemented one at a time.
+Early development, and honest about it. Four checks are merged. There is not yet a way to run the toolkit against a repository without writing Rust — that work is [issue #9](https://github.com/Soro-Forge/soroban-forge/issues/9), with a GitHub Action wrapper in [issue #10](https://github.com/Soro-Forge/soroban-forge/issues/10).
 
-See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the repository layout and [`CONTRIBUTING.md`](CONTRIBUTING.md) if you would like to build one.
+The [open issues](https://github.com/Soro-Forge/soroban-forge/issues) are the roadmap. Two of them are marked good first issue.
+
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the repository layout and [`CONTRIBUTING.md`](CONTRIBUTING.md) if you would like to build a check. Brand assets live in [`brand/`](brand).
 
 ## Licence
 
