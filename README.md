@@ -47,4 +47,4 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the repository layout and
 
 ## Licence
 
-MIT
+[MIT](LICENSE)
